@@ -1,0 +1,850 @@
+* {
+           margin: 0;
+           padding: 0;
+           box-sizing: border-box;
+           font-family: 'Poppins', sans-serif;
+        }
+
+         body {
+           font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffe6f0; /* pastel pink background */
+            color: #333;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Header */
+        header {
+            background-color: #ffd6e0; /* pastel pink */
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            font-family: Lucida Calligraphy;
+            font-weight: 600;
+            color: #B51173;
+           
+        }
+        .head-btn{
+            display: flex;
+            list-style:none;
+            border:none;
+           
+        }
+        
+        .headerlogin-btn{
+            margin-left:auto;
+            padding:8px 10px;
+            background: #ff4d6d;
+            color:white;
+            border-radius:20px;
+            cursor:pointer;
+            transition:0.3s;
+        }
+         .headerlogin-btn:hover {
+            background-color:#eb4343;
+        }
+        .sign-btn{
+            margin-left:10px;
+            padding:8px 10px;
+            background: #ff4d6d;
+            color:white;
+            border-radius:20px;
+            cursor:pointer;
+            transition:0.3s;
+        }
+        .sign-btn:hover {
+            background-color:#eb4343;
+        }
+        
+
+        /* Hero Section */
+        /* Navbar */
+       .navbar{
+            display:flex;
+            align-items:center;
+            background-color:#FCDCDC;
+            padding:15px 40px;
+
+            position:sticky;
+            top:0;
+            z-index:1000;
+        }
+
+       .nav-links{
+            list-style:none;
+            display:flex;
+            margin-left:25px;
+            gap:30px;
+            padding:0;
+        }
+
+        .nav-links a{
+            text-decoration:none;
+            color:#8B0000;
+            font-weight:500;
+            position:relative;
+        }
+        
+       .nav-links a::after{
+            content:"";
+            position:absolute;
+            width:0;
+            height:2px;
+            background:#8B0000;
+            left:0;
+            bottom:-5px;
+            transition:0.3s;
+        }
+
+        .nav-links a:hover::after{
+            width:100%;
+        }
+        /* Hero Section */
+
+        .hero{
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            gap:60px;
+            padding:80px 80px;
+            background: radial-gradient(circle at top left, #fff0f5, #fcdcdc);
+        }
+
+        .hero-content{
+            flex:1;
+        }
+
+       .hero h2{
+            font-size:3.5rem;
+            color:#ff4d6d;
+            line-height:1.2;
+            margin-left: 60px;
+            margin-bottom:20px;
+        }
+
+       .hero-subtext{
+            font-size:1.2rem;
+            color:#555;
+            margin-bottom:30px;
+            max-width:450px;
+       }
+
+      /* Image */
+
+       .hero-image{
+            flex:1;
+            display:flex;
+            justify-content:center;
+            margin-right:0;
+        }
+
+        .hero-image img{
+            width:320px;
+            height:auto;
+            object-fit:contain;
+            filter: drop-shadow(0px 10px 20px rgba(0,0,0,0.15));
+        }
+
+    /* Button */
+
+       .book-btn{
+            display:inline-block;
+            padding:14px 28px;
+            background:#ff4d6d;
+            color:white;
+            border-radius:25px;
+            font-size:1rem;
+            transition:0.3s;
+        }
+
+       .book-btn:hover{
+            background:#8B0000;
+        }
+       
+        /*BookNow page*/
+        .booking-container{
+            width:400px;
+            margin:60px auto;
+            background:white;
+            padding:50px;
+            border-radius:10px;
+            box-shadow:0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .booking-container h2{
+            text-align:center;
+            color:#d63384;
+            margin-bottom:20px;
+        }
+
+        .form-group{
+            margin-bottom:15px;
+        }
+
+        .form-group label{
+            display:block;
+            margin-bottom:5px;
+            font-weight:bold;
+        }
+
+        .form-group input,
+        .form-group select{
+            width:100%;
+            padding:8px;
+            border:1px solid #ddd;
+            border-radius:5px;
+        }
+
+        .submit-btn{
+            width:100%;
+            padding:10px;
+            background:#ff66a3;
+            color:white;
+            border:none;
+            border-radius:5px;
+            font-size:16px;
+            cursor:pointer;
+        }
+
+        .submit-btn:hover{
+            background:#e05590;
+        }
+        .btn-cancel {
+            display: flex !important;
+            justify-content: center; /* Horizontally center karanawa */
+            margin-top: 20px;       /* Form eke anith ewa ekka thiena ida */
+            padding: 10px 25px;
+            background-color: #6c757d; /* Gray color (cancel walata gelapena pata) */
+            color: white;
+            text-decoration: none; /* Link ekaka thiena underline eka ain karanna */
+            border-radius: 5px;
+            font-family: sans-serif;
+            font-size: 14px;
+            transition: background 0.3s ease;
+        }
+
+        .btn-cancel:hover {
+            background-color: #5a6268; /* Mouse eka giyama poddak thada wenna */
+            color: white;
+        }           
+        /*login form*/
+        .login-container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            width: 100%;
+            max-width: 400px; 
+            margin: 20px;     
+            text-align: center;
+        }
+
+      
+        .login-page-wrapper {
+            width: 100%;
+            min-height: 100vh; 
+            display: flex;
+            justify-content: center; 
+            align-items: center;     
+            padding: 20px;
+        }
+
+
+
+        .login-form h2 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+       .login-form p {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 25px;
+        } 
+
+       .input-group {
+            text-align: left;
+            margin-bottom: 15px;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 14px;
+            margin-bottom: 5px;
+            color: #444;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            outline: none;
+        }
+
+        .options {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            margin-bottom: 20px;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            background: #ff66a3;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }                 
+
+        .login-btn:hover {
+            background: #a02f7a;
+        }
+
+        .register-link {
+            margin-top: 20px;
+            font-size: 13px;
+        }
+
+        .register-link a {
+            color: #a02f7a;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .signup-container {
+            background: #ffffff;
+            padding: 30px 40px;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            width: 100%;
+            max-width: 450px;
+            text-align: center;
+        }
+        .input-group {
+            text-align: left;
+            margin-bottom: 12px;
+        }
+        .input-group input {
+            width: 100%;
+            padding: 15px; 
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .input-group input:focus {
+            border-color: #f12711;
+            box-shadow: 0 0 5px rgba(241, 39, 17, 0.2);
+        }
+        /* Dashboard Layout */
+
+        .dashboard-container{
+            display:flex;
+            height:100vh;
+        }
+
+b       /* Sidebar */
+
+       .sidebar{
+            width:240px;
+            background:#0f172a;
+            color:white;
+            padding:30px 20px;
+        }
+
+
+       .sidebar ul{
+            list-style:none;
+        }
+
+       .sidebar ul li{
+            margin:15px 0;
+        }       
+
+       .sidebar ul li a{
+            display:block;
+            padding:12px 15px;
+            text-decoration:none;
+            color:#B51173;
+            border-radius:6px;
+            transition:0.3s;
+            font-size:15px;
+        }
+
+        /* Hover Effect */
+
+        .sidebar ul li a:hover{
+            background:#1e293b;
+            color:white;
+            padding-left:20px;
+        }
+        /* Active Menu */
+
+        .sidebar ul li a.active{
+            background:#ff6b81;
+            color:white;
+            font-weight:500;
+        }
+        /* Optional left border highlight */
+
+        .sidebar ul li a.active::before{
+            content:"";
+            position:absolute;
+            left:0;
+            width:4px;
+            height:40px;
+            background:white;
+            border-radius:3px;
+        }
+
+        /* Main Content */
+
+        .main-content{
+            flex:1;
+            padding:40px;
+        }
+
+        header h1{
+            margin-bottom:10px;
+        }
+
+        header p{
+            color:gray;
+            margin-bottom:40px;
+        }
+
+        /* Cards */
+
+        .cards{
+            display:grid;
+            grid-template-columns:repeat(3,1fr);
+            gap:25px;
+        }
+
+        .card{
+            background:white;
+            padding:30px;
+            border-radius:10px;
+            box-shadow:0 5px 15px rgba(0,0,0,0.1);
+            transition:0.3s;
+        }
+
+        .card:hover{
+            transform:translateY(-5px);
+        }
+
+        .card h3{
+            margin-bottom:10px;
+        }
+
+        .card p{
+            color:gray;
+            margin-bottom:15px;
+        }
+
+        .card a{
+            text-decoration:none;
+            background:#ff6b81;
+            color:white;
+            padding:8px 18px;
+            border-radius:5px;
+            font-size:14px;
+        }
+
+        .card a:hover{
+            background:#ff4757;
+       }
+        .services-container{
+            display:grid;
+            grid-template-columns:repeat(3,1fr);
+            gap:20px;
+            padding:30px;
+        }
+
+       .service-card{
+            background:white;
+            padding:25px;
+            border-radius:10px;
+            box-shadow:0 5px 15px rgba(0,0,0,0.1);
+            transition:0.3s;
+        }
+
+       .service-card:hover{
+           transform:translateY(-5px);
+        }
+
+       .service-card a{
+            background:#ff6b81;
+            color:white;
+            padding:8px 15px;
+            border-radius:5px;
+            text-decoration:none;
+        } 
+        
+   
+        /* --- My Booking Page Specific Styles --- */
+    .bookings-main-container {
+        max-width: 1100px;
+        margin: 40px auto;
+        background: #ffffff;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    }
+
+    .bookings-main-container h2 {
+        color: #B51173;
+        margin-bottom: 25px;
+        font-size: 24px;
+        border-bottom: 2px solid #ffd6e0;
+        padding-bottom: 10px;
+    }
+
+    .table-wrapper {
+        overflow-x: auto;
+    }
+
+    .custom-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .custom-table th {
+        background-color: #ffd6e0;
+        color: #B51173;
+        padding: 15px;
+        text-align: left;
+    }
+
+    .custom-table td {
+        padding: 15px;
+        border-bottom: 1px solid #eee;
+    }
+
+    /* Status Badges */
+    .status-pill {
+        padding: 5px 12px;
+        border-radius: 20px;
+        font-size: 11px;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+    .pill-pending { background: #fff3cd; color: #856404; }
+    .pill-confirmed { background: #d4edda; color: #155724; }
+    .pill-cancelled { background: #f8d7da; color: #721c24; }
+
+    /* Action Button */
+    .cancel-action-btn {
+        background-color: #ff4d6d;
+        color: white;
+        border: none;
+        padding: 8px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 12px;
+        transition: 0.3s;
+    }
+
+    .cancel-action-btn:hover {
+        background-color: #B51173;
+    }
+    .price-tag {
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 1.1em;
+        }
+
+
+    .staff-dashboard-container{
+            width:90%;
+            margin:auto;
+    }
+
+    .staff-dashboard-container h2{
+            margin-top:20px;
+    }
+
+    .stf-card{
+            background:white;
+            padding:20px;
+            margin-bottom:20px;
+            border-radius:8px;
+    }
+
+    .staff table{
+            width:100%;
+            border-collapse:collapse;
+    }
+
+    .staff table th,table td{
+            padding:10px;
+            border:1px solid #ddd;
+    }
+
+    .stf-logout{
+            background:red;
+            color:white;
+            padding:10px 20px;
+            text-decoration:none;
+            border-radius:5px;
+    }
+
+                /* --- Profile Page Specific Styles --- */
+
+            /* Profile card */
+        .profile-wrapper {
+            display: flex;
+            justify-content: center;
+            margin: 50px 0;
+        }
+        .profile-card {
+            background: #ffffff;
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+        .profile-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .profile-header h2 {
+            color: #B51173;
+        }
+        .role-badge {
+            background-color: #ff4d6d;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            text-transform: uppercase;
+        }
+        .profile-body .info-row {
+            margin-bottom: 15px;
+        }
+        .profile-body label {
+            font-weight: 500;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .profile-body input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            outline: none;
+            transition: 0.3s;
+        }
+        .profile-body input:disabled {
+            background: #f8f8f8;
+            color: #555;
+        }
+        .edit-btn {
+            padding: 10px 20px;
+            background: #ff66a3;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: 0.3s;
+        }
+        .edit-btn:hover {
+            background: #a02f7a;
+        }
+        .hidden {
+            display: none;
+        }
+        #msg {
+            background: #d4edda;
+            color: #155724;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            text-align: center;
+            font-weight: 500;
+        }
+        /* --- Additional Services & About Styles --- */
+
+        .services-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            padding: 20px 80px;
+        }
+
+        .service-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(181, 17, 115, 0.05);
+            transition: all 0.3s ease;
+            border: 1px solid #ffd6e0;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: #ff66a3;
+            box-shadow: 0 15px 30px rgba(181, 17, 115, 0.1);
+        }
+
+        .service-card h3 {
+            margin: 15px 0 10px;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .service-card .price-tag {
+            color: #B51173;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .service-card a {
+            display: inline-block;
+            padding: 10px 25px;
+            background: #ff4d6d;
+            color: white;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .service-card a:hover {
+            background: #B51173;
+            letter-spacing: 1px;
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: #fff0f5;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 10px;
+        }
+
+                /* Footer */
+        footer {
+            background-color: #ffd6e0;
+            text-align: center;
+            padding: 30px;
+            margin-top: 50px;
+            font-weight: 500;
+            color: #ff4d6d;
+        }
+
+        
+
+        /* Common button style  */
+        button, .submit-btn, .login-btn, .cancel-action-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        /* Action buttons inside tables */
+        .action-buttons {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+        }
+
+        /* Edit / Delete buttons (if you use them) */
+        .edit-btn {
+            background: #4CAF50;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 5px;
+        }
+
+        .edit-btn:hover {
+            background: #3d9441;
+        }
+
+        .delete-btn {
+            background: #ff4d6d;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 5px;
+        }
+
+        .delete-btn:hover {
+            background: #B51173;
+        }
+
+        /* Fix cancel button alignment */
+        .btn-cancel {
+            display: inline-block; 
+            text-align: center;
+        }
+
+        /* Header buttons alignment fix */
+        .head-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+                /* Mobile Responsive */
+    @media (max-width: 768px) {
+        table, thead, tbody, th, td, tr { display: block; }
+        th { display: none; }
+        tr { 
+            margin-bottom: 20px; 
+            border: 1px solid #eee; 
+            border-radius: 10px; 
+            padding: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+        }
+        td { 
+            border: none; 
+            padding: 8px 10px; 
+            text-align: right; 
+            position: relative; 
+        }
+        td::before { 
+            content: attr(data-label); 
+            position: absolute; 
+            left: 10px; 
+            font-weight: 600; 
+            color: #999;
+        }
+    } 
+        @media (max-width:768px){
+
+        .nav-links{
+             display:none;
+         }
+
+        .book-btn{
+             display:none;
+         }
+        .hero-image{
+             justify-content:center;
+             margin-right:0;
+             margin-top:20px;
+}
+}
