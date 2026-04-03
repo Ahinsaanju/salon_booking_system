@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="style.css" rel="stylesheet">
 </head>
 <body>
@@ -30,9 +31,15 @@
                 <input type="email" name="username" id="username" placeholder="Enter your email" required>
             </div>
             
-            <div class="input-group">
+           <div class="input-group" style="position: relative;">
                 <label for="password">Password</label>
+
                 <input type="password" name="password" id="password" placeholder="Enter your password" required>
+
+                <i class="fa-solid fa-eye" id="eye1"
+                onclick="togglePassword('password', 'eye1')"
+                style="position:absolute; right:10px; top:32px; cursor:pointer;">
+                </i>
             </div>
 
             <div class="options">
@@ -46,6 +53,21 @@
         </form>
     </div>
 </section>    
+<script>
+function togglePassword(fieldId, iconId) {
+    let field = document.getElementById(fieldId);
+    let icon = document.getElementById(iconId);
 
+    if (field.type === "password") {
+        field.type = "text";
+        icon.classList.remove("fa-eye");
+        icon.classList.add("fa-eye-slash");
+    } else {
+        field.type = "password";
+        icon.classList.remove("fa-eye-slash");
+        icon.classList.add("fa-eye");
+    }
+}
+</script>
 </body>
 </html>

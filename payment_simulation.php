@@ -1,8 +1,8 @@
 <?php
 session_start();
-require_once 'db.php'; // Database connection එක හරියටම තියෙන්න ඕන
+require_once 'db.php'; 
 
-// URL එකෙන් Appointment ID සහ Amount එක ගන්නවා
+
 $app_id = isset($_GET['appointment_id']) ? mysqli_real_escape_string($conn, $_GET['appointment_id']) : '';
 $amount = isset($_GET['amount']) ? mysqli_real_escape_string($conn, $_GET['amount']) : '0';
 

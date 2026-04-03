@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Signup - Salon Booking</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="style.css" rel="stylesheet">
 </head>
 <body>
@@ -37,14 +38,25 @@
                     <span id="phoneError" style="font-size: 13px; margin-top: 5px; display: block;"></span>
                 </div>
 
-                <div class="input-group">
+               <div class="input-group" style="position: relative;">
                     <label>Password</label>
-                    <input type="password" name="password" required>
+                  <input type="password" id="password" name="password" onkeyup="validatePassword()" required>
+
+                    <i class="fa-solid fa-eye" id="eye1"
+                    onclick="togglePassword('password', 'eye1')"
+                    style="position:absolute; right:10px; top:32px; cursor:pointer;">
+                    </i>
                 </div>
 
-                <div class="input-group">
+                <div class="input-group" style="position: relative;">
                     <label>Confirm Password</label>
-                    <input type="password" name="confirm_password" required>
+                    <input type="password" id="confirm_password" name="confirm_password" onkeyup="validatePassword()" required>
+
+                    <i class="fa-solid fa-eye" id="eye2"
+                    onclick="togglePassword('confirm_password', 'eye2')"
+                    style="position:absolute; right:10px; top:32px; cursor:pointer;">
+                    </i>
+                    <span id="passwordError" style="font-size: 13px; margin-top: 5px; display: block;"></span>
                 </div>
 
                 <button type="submit" name="signup" class="login-btn">Sign Up</button>
@@ -84,7 +96,66 @@ function validatePhone() {
         errorMsg.innerText = "Numbers only, please!";
         errorMsg.style.color = "red";
     }
+     
 }
+function togglePassword(fieldId, iconId) {
+    let field = document.getElementById(fieldId);
+    let icon = document.getElementById(iconId);
+
+    if (field.type === "password") {
+        field.type = "text";
+        icon.classList.remove("fa-eye");
+        icon.classList.add("fa-eye-slash");
+    } else {
+        field.type = "password";
+        icon.classList.remove("fa-eye-slash");
+        icon.classList.add("fa-eye");
+    }
+}
+function validatePassword() {
+    let passwordField = document.getElementById('password');
+    let confirmField = document.getElementById('confirm_password');
+    let errorMsg = document.getElementById('passwordError');
+    let submitBtn = document.querySelector('.login-btn');
+
+    let passValue = passwordField.value;
+    let confirmValue = confirmField.value;
+
+    // 1. Minimum Length Check (Characters 8ක් තියෙන්න ඕනේ)
+    if (passValue.length > 0 && passValue.length < 6) {
+        errorMsg.innerText = "× Password must be at least 6 characters long.";
+        errorMsg.style.color = "red";
+        passwordField.style.borderColor = "red";
+        submitBtn.disabled = true;
+        submitBtn.style.opacity = "0.6";
+        return; // දිග මදි නම් මෙතනින් එහාට check කරන්නේ නැහැ
+    } else {
+        passwordField.style.borderColor = "#ccc"; // දිග හරිනම් border එක normal කරනවා
+    }
+
+    // 2. Matching Check
+    if (confirmValue.length === 0) {
+        errorMsg.innerText = "";
+        confirmField.style.borderColor = "#ccc";
+        return;
+    }
+
+    if (passValue === confirmValue) {
+        errorMsg.innerText = "✓ Passwords match and length is valid";
+        errorMsg.style.color = "green";
+        confirmField.style.borderColor = "green";
+        submitBtn.disabled = false;
+        submitBtn.style.opacity = "1";
+    } else {
+        errorMsg.innerText = "× Passwords do not match";
+        errorMsg.style.color = "red";
+        confirmField.style.borderColor = "red";
+        submitBtn.disabled = true;
+        submitBtn.style.opacity = "0.6";
+    }
+}
+// Password field eka change karaddi confirm field ekath check wenna oni nisa 
+// password field ekatath 'onkeyup="validatePassword()"' danna HTML eke.
 </script>
 </body>
 </html>

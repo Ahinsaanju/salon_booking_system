@@ -1,5 +1,5 @@
  <footer>
-        &copy; 2026 Salon Thisu. All rights reserved.
+        &copy; 2026 beautislot. All rights reserved.
     </footer>
 
 

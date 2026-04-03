@@ -62,31 +62,22 @@ $user_data = mysqli_fetch_assoc($user_result);
         </div>
 
         <div class="form-group">
-            <label>Staff</label>
-            <select name="staff" required>
-                <option value="">-- Select Staff --</option>
-                <?php
-                $query = "SELECT s.staff_id, u.first_name, s.specialization 
-                          FROM staff s 
-                          JOIN users u ON s.user_id = u.user_id";
-                $staff_list = mysqli_query($conn, $query);
-                while($s = mysqli_fetch_assoc($staff_list)){
-                ?>
-                <option value="<?php echo $s['staff_id']; ?>">
-                    <?php echo $s['first_name']; ?> (<?php echo $s['specialization']; ?>)
-                </option>
-                <?php } ?>
-            </select>
-        </div>
-
-        <div class="form-group">
             <label>Date</label>
-            <input type="date" name="appointment_date" min="<?php echo date('Y-m-d'); ?>" required>
+            <input type="date" id="date" name="appointment_date" min="<?php echo date('Y-m-d'); ?>" required>
         </div>
 
         <div class="form-group">
             <label>Time</label>
-            <input type="time" name="appointment_time" required>
+            <select id="time" name="appointment_time" required>
+                <option value="">-- Select Time --</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Staff</label>
+            <select name="staff" id="staffSelect" required>
+                <option value="">-- Select Staff --</option>
+            </select>
         </div>
 
         <div class="form-group">
@@ -97,22 +88,19 @@ $user_data = mysqli_fetch_assoc($user_result);
             </select>
         </div>
 
-        
-        
-            <button type="submit" class="submit-btn">Book Now</button>
-            <a href="login_user_dashboard.php" class="btn-cancel">Cancel</a>
+        <button type="submit" class="submit-btn">Book Now</button>
+        <a href="login_user_dashboard.php" class="btn-cancel">Cancel</a>
       
     </form>
 </div>
-<script id="y1c6ux">
-    
+
+<script>
 function updatePrice() {
     let select = document.getElementById("serviceSelect");
     let price = select.options[select.selectedIndex].getAttribute("data-price");
     document.getElementById("displayPrice").innerText = price ? price : 0;
 }
 
-//  Phone Number check
 function validatePhone() {
     let phoneInput = document.getElementById('phone');
     let errorMsg = document.getElementById('phoneError');
@@ -126,20 +114,75 @@ function validatePhone() {
         errorMsg.style.color = "red";
     }
 }
-document.getElementById("date").addEventListener("change", function() {
-    let selectedDate = this.value;
-    let today = new Date().toISOString().split('T')[0];
-    let timeInput = document.getElementById("time");
 
-    if(selectedDate === today) {
-        let now = new Date();
-        let hours = String(now.getHours()).padStart(2, '0');
-        let minutes = String(now.getMinutes()).padStart(2, '0');
-        timeInput.min = hours + ":" + minutes;
-    } else {
-        timeInput.removeAttribute("min");
+// Generate time slots
+function generateTimeSlots(selectedDate) {
+    let timeSelect = document.getElementById("time");
+    let today = new Date().toISOString().split('T')[0];
+    timeSelect.innerHTML = '<option value="">-- Select Time --</option>';
+
+    let startHour = 9;
+    let endHour = 20;
+    let now = new Date();
+
+    for (let h = startHour; h <= endHour; h++) {
+        for (let m = 0; m < 60; m += 30) {
+            let hour = String(h).padStart(2,'0');
+            let minute = String(m).padStart(2,'0');
+            let timeValue = hour + ":" + minute;
+
+            if (selectedDate === today) {
+                let slotTime = new Date();
+                slotTime.setHours(h, m, 0);
+                if (slotTime <= now) continue;
+            }
+
+            let option = document.createElement("option");
+            option.value = timeValue;
+            option.textContent = timeValue;
+            timeSelect.appendChild(option);
+        }
     }
+}
+
+// Fetch available staff
+function fetchAvailableStaff() {
+    let serviceId = document.getElementById("serviceSelect").value;
+    let date = document.getElementById("date").value;
+    let time = document.getElementById("time").value;
+
+    if (!serviceId || !date || !time) return; // if not selected, stop
+
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", "get_available_staff.php", true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.onload = function() {
+        if (this.status === 200) {
+            let staffSelect = document.getElementById("staffSelect");
+            staffSelect.innerHTML = '<option value="">-- Select Staff --</option>';
+            let staffList = JSON.parse(this.responseText);
+            staffList.forEach(staff => {
+                let option = document.createElement("option");
+                option.value = staff.staff_id;
+                option.textContent = staff.first_name + " (" + staff.specialization + ")";
+                staffSelect.appendChild(option);
+            });
+        }
+    };
+    xhr.send(`service_id=${serviceId}&date=${date}&time=${time}`);
+}
+
+// Call fetchAvailableStaff whenever service, date, or time changes
+document.getElementById("serviceSelect").addEventListener("change", fetchAvailableStaff);
+document.getElementById("date").addEventListener("change", function() {
+    generateTimeSlots(this.value);
+    fetchAvailableStaff();
 });
+document.getElementById("time").addEventListener("change", fetchAvailableStaff);
+window.onload = function() {
+    generateTimeSlots(document.getElementById("date").value);
+    fetchAvailableStaff(); // add this line
+};
 </script>
 </body>
 </html>

@@ -45,7 +45,7 @@ $pending = mysqli_fetch_assoc($pending_res);
                 <p style="font-size: 2.2rem; font-weight: bold; margin: 15px 0;">
                     <?php echo $todayBookings['total']; ?>
                 </p>
-                <a href="admin_bookings.php">View List</a>
+                <a href="todays_appointment.php">View List</a>
             </div>
 
             <div class="card">
@@ -61,7 +61,7 @@ $pending = mysqli_fetch_assoc($pending_res);
                 <p style="font-size: 2.2rem; font-weight: bold; margin: 15px 0;">
                     <?php echo $pending['total']; ?>
                 </p>
-                <a href="admin_bookings.php" style="background: #6c757d;">Check Now</a>
+                <a href="admin_appointments.php" style="background: #6c757d;">Check Now</a>
             </div>
         </div>
 
