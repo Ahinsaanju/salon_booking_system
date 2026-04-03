@@ -154,8 +154,7 @@ function validatePassword() {
         submitBtn.style.opacity = "0.6";
     }
 }
-// Password field eka change karaddi confirm field ekath check wenna oni nisa 
-// password field ekatath 'onkeyup="validatePassword()"' danna HTML eke.
+
 </script>
 </body>
 </html>
